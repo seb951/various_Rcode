@@ -36,3 +36,13 @@ dev.new(width=6, height=6,noRStudioGD = TRUE)
 venn
 dev.print(device=pdf,"~/Desktop/venn_figure.pdf", onefile=FALSE)
 dev.off()
+
+
+#
+Finalement, avec tes fold changes, tu pourrais aussi faire un graphique pour démontrer la suexpression dans un groupe ou l'autre. Par
+
+foldchange = data.frame(fc = rnorm(100,mean =3)/rnorm(100,mean =3))
+foldchange$log = log(foldchange$fc)
+foldchange = foldchange[order(foldchange$fc),]
+foldchange$sample = 1:100
+plot(foldchange$sample,foldchange$log,type = "h",lwd = 4)
